@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>java script excercise 3</title>
+</head>
+<body>
+  <h1>java script excercise 3</h1>
+
+  <label for="numberInput">Enter a Number:</label>
+
+  <input type="number" id="numberInput">
+  
+  <button onclick="insertNumber()">Insert</button>
+
+  <button onclick="deleteNumber()">Delete</button><br><br>
+
+  <div id="numberStatus">
+   
+  </div>
+
+  <script>
+
+    var numbers = [];
+
+    function insertNumber() {
+
+      var number = parseInt(document.getElementById("numberInput").value);
+
+      if (!isNaN(number)) {
+
+        numbers.push(number);
+
+        updateStatus();
+
+      } else {
+
+        alert("Please enter a valid number.");
+      }
+    }
+
+    function deleteNumber() {
+
+      var number = parseInt(document.getElementById("numberInput").value);
+
+      if (!isNaN(number)) {
+
+        var index = numbers.indexOf(number);
+
+        if (index !== -1) {
+
+          numbers.splice(index, 1);
+
+          updateStatus();
+        } else {
+
+          alert("Number not found.");
+
+        }
+      } else {
+
+        alert("Please enter a valid number.");
+
+      }
+    }
+
+    function updateStatus() {
+
+      var sum = numbers.reduce((acc, curr) => acc + curr, 0);
+
+      var highest = Math.max(...numbers);
+
+      var lowest = Math.min(...numbers);
+
+      var statusDiv = document.getElementById("numberStatus");
+
+      statusDiv.innerHTML = `
+
+        <p>Numbers: ${numbers.join(", ")}</p>
+
+        <p>Sum: ${sum}</p>
+
+        <p>Highest: ${highest}</p>
+        
+        <p>Lowest: ${lowest}</p>
+      `;
+    }
+  </script>
+</body>
+</html>

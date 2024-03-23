@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>java script excercise 2</title>
+</head>
+<body>
+  <h1>java script excercise 2</h1>
+
+  <label for="firstName">First Name:</label>
+
+  <input type="text" id="firstName"><br>
+
+  <label for="middleName">Middle Name:</label>
+
+  <input type="text" id="middleName"><br>
+
+  <label for="lastName">Last Name:</label>
+
+  <input type="text" id="lastName"><br><br>
+
+  <button onclick="generateFullName()">Generate Full Name</button>
+
+  <button onclick="clearFields()">Clear</button><br><br>
+
+  <div id="fullNameStatus">
+    
+  </div>
+
+  <script>
+    function generateFullName() {
+      
+      var firstName = document.getElementById("firstName").value.trim();
+
+      var middleName = document.getElementById("middleName").value.trim();
+
+      var lastName = document.getElementById("lastName").value.trim();
+
+      
+      if (!firstName || !lastName) {
+        alert("Please enter first name and last name.");
+        return;
+      }
+
+    
+      var fullName = (middleName) ? `${firstName} ${middleName} ${lastName}` : `${firstName} ${lastName}`;
+
+      
+      var fullNameStatusDiv = document.getElementById("fullNameStatus");
+
+      fullNameStatusDiv.innerHTML = `<p>Full Name: ${fullName}</p>`;
+    }
+
+    function clearFields() {
+      
+      document.getElementById("firstName").value = "";
+
+      document.getElementById("middleName").value = "";
+
+      document.getElementById("lastName").value = "";
+      
+      document.getElementById("fullNameStatus").innerHTML = "";
+    }
+  </script>
+</body>
+</html>
